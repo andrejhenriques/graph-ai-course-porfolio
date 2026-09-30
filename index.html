@@ -124,14 +124,25 @@
   ol.modules p { color: var(--muted); font-size: 0.95rem; max-width: 62ch; }
 
   /* Submissions */
-  .weeks { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 14px; }
-  .week { background: var(--panel); border: 1px solid var(--line); padding: 16px; display: grid; gap: 8px; align-content: start; min-height: 110px; }
-  .week .wk { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--head); }
-  .week .title { font-weight: 700; font-size: 0.97rem; }
-  .week .status { justify-self: start; font-size: 0.78rem; color: var(--muted); border: 1px dashed var(--line); padding: 2px 8px; }
+  .rhythm { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+  .rhythm > div { background: var(--panel); border: 1px solid var(--line); padding: 18px 20px; display: grid; gap: 8px; align-content: start; }
+  .rhythm h3 { font-size: 1.05rem; font-weight: 700; color: var(--head); }
+  .rhythm p { color: var(--muted); font-size: 0.95rem; }
+  .rhythm .kit b { color: var(--fg); font-weight: 700; margin-right: 6px; }
+
+  ol.weeks { list-style: none; padding: 0; display: grid; gap: 14px; }
+  .week { background: var(--panel); border: 1px solid var(--line); padding: 18px 20px; display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px 24px; }
+  .wk-side { display: grid; gap: 10px; align-content: start; justify-items: start; }
+  .week .wk { font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--head); font-weight: 500; }
+  .week .status { font-size: 0.78rem; color: var(--muted); border: 1px dashed var(--line); padding: 2px 8px; }
   .week a.status { border: 1px solid var(--link); color: var(--link); text-decoration: none; }
   .week a.status:hover { background: var(--link); color: var(--bg); }
-  .week.open { border-left: 3px solid var(--pop); }
+  .wk-main { min-width: 0; display: grid; gap: 4px; }
+  .wk-main .mod { font-family: var(--font-mono); font-size: 0.78rem; color: var(--muted); }
+  .wk-main h3 { font-size: 1.15rem; font-weight: 700; }
+  details { margin-top: 8px; }
+  summary { cursor: pointer; color: var(--link); font-size: 0.9rem; font-weight: 700; width: fit-content; }
+  ul.topics { padding-left: 1.1rem; margin-top: 8px; color: var(--muted); font-size: 0.93rem; display: grid; gap: 4px; }
 
   /* Credit */
   .credit { border-top: 1px solid var(--line); padding-block: 20px 0; color: var(--muted); font-size: 0.85rem; max-width: 70ch; }
@@ -142,6 +153,8 @@
   }
   @media (max-width: 560px) {
     ol.modules li { grid-template-columns: minmax(0, 1fr); }
+    .week { grid-template-columns: minmax(0, 1fr); }
+    .wk-side { grid-auto-flow: column; justify-content: space-between; align-items: center; width: 100%; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 </style>
@@ -275,19 +288,189 @@
       <section id="submissions">
         <h2><svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M9 2h6v2h4a1 1 0 0 1 1 1v17a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h4zM7 9v2h10V9zm0 4v2h10v-2zm0 4v2h6v-2z"/></svg>My weekly submissions</h2>
         <div class="body">
-          <!-- To add a submission later: replace the <span class="status"> with
-               <a class="status" href="YOUR-LINK" target="_blank" rel="noopener">View submission</a>
-               and optionally fill in the title. -->
-          <ul class="weeks">
-            <li class="week open"><span class="wk">Week 1</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 2</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 3</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 4</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 5</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 6</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 7</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-            <li class="week"><span class="wk">Week 8</span><span class="title">Title to come</span><span class="status">Coming soon</span></li>
-          </ul>
+          <p class="lead">Each week follows the same rhythm: prework before the workshop, then a live workshop. My submission for each week will be linked below.</p>
+
+          <div class="rhythm">
+            <div>
+              <h3>1 · Prework</h3>
+              <p>About 4 hours of prework tasks per week, completed before the workshop.</p>
+              <p class="kit"><b>Lessons</b> Video tutorials and practice exercises.</p>
+              <p class="kit"><b>Online quizzes</b> Multiple choice theory quizzes.</p>
+            </div>
+            <div>
+              <h3>2 · Workshop</h3>
+              <p>Class time is used as a workshop where I apply the prework content and develop new skills while interacting with other students.</p>
+              <p class="kit"><b>Whole-class teaching</b> Instructors demo new concepts.</p>
+              <p class="kit"><b>Group projects</b> Practice skills with new datasets.</p>
+            </div>
+          </div>
+
+          <!-- To add a submission later: replace the <span class="status"> in a week with
+               <a class="status" href="YOUR-LINK" target="_blank" rel="noopener">View submission</a> -->
+          <ol class="weeks">
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 1</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 1</p>
+                <h3>Websites, Documents &amp; Presentations</h3>
+                <details open>
+                  <summary>Topics (7)</summary>
+                  <ul class="topics">
+                  <li>How LLMs are trained and an overview of popular LLM providers</li>
+                  <li>Principles for prompting LLMs</li>
+                  <li>Generating DOCX, PPTX and HTML outputs</li>
+                  <li>Building simple research websites</li>
+                  <li>Learn how to use AI detectors to stay in control of your writing</li>
+                  <li>Tips for avoiding “AI slop”</li>
+                  <li>Introduction to AI presentation tools</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 2</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 2</p>
+                <h3>AI-Automated Data Analysis</h3>
+                <details>
+                  <summary>Topics (6)</summary>
+                  <ul class="topics">
+                  <li>Privacy considerations when using generative AI LLMs</li>
+                  <li>Autocomplete, chat and coding agents: a range of modalities</li>
+                  <li>Data agents with a REPL loop</li>
+                  <li>Spreadsheet manipulation and quick dashboarding with TheBricks</li>
+                  <li>Claude Code, Cowork and Codex: on-device data agents</li>
+                  <li>The verification problem: spotting hallucinations in statistical outputs</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 3</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 3</p>
+                <h3>GenAI for Text Processing &amp; Research</h3>
+                <details>
+                  <summary>Topics (6)</summary>
+                  <ul class="topics">
+                  <li>Context window limits</li>
+                  <li>Using LLM APIs</li>
+                  <li>Extracting structured data from unstructured text</li>
+                  <li>AI-powered literature review (e.g. Elicit)</li>
+                  <li>AI for qualitative data analysis</li>
+                  <li>Managing hallucinations, non-determinism, API costs and privacy</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 4</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 4</p>
+                <h3>Custom GPTs and Chatbots</h3>
+                <details>
+                  <summary>Topics (6)</summary>
+                  <ul class="topics">
+                  <li>Considerations for choosing the right LLM</li>
+                  <li>LLM context windows, context engineering and RAG</li>
+                  <li>Building and embedding website chatbots (e.g. Botpress)</li>
+                  <li>Custom GPTs and projects for internal use (e.g. ChatGPT, Claude, NotebookLM)</li>
+                  <li>Risks of external-facing chatbots: hallucinations, prompt injection attacks and abuse</li>
+                  <li>Mitigations: verified knowledge bases, sandboxing and rate limits</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 5</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 5</p>
+                <h3>AI for Task Automation</h3>
+                <details>
+                  <summary>Topics (5)</summary>
+                  <ul class="topics">
+                  <li>Traditional vs LLM-powered automations</li>
+                  <li>Action-based and frequency triggers</li>
+                  <li>Automated literature monitoring and research digests</li>
+                  <li>When to keep a human in the loop</li>
+                  <li>Browser control agents for web-based tasks</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 6</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 6</p>
+                <h3>GenAI for Communication and Outreach</h3>
+                <details>
+                  <summary>Topics (6)</summary>
+                  <ul class="topics">
+                  <li>How image generation models work</li>
+                  <li>HTML/CSS vs SVG code vs pixels: choosing the right format</li>
+                  <li>AI-assisted flyers and informational designs</li>
+                  <li>Visual abstracts for research papers</li>
+                  <li>Limitations of AI-generated images: errors, control challenges and originality</li>
+                  <li>AI-generated video: tutorials, translation and dubbing (e.g. HeyGen, RunwayML)</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 7</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 7</p>
+                <h3>Capstone Project &amp; Showcase</h3>
+                <details>
+                  <summary>Topics (1)</summary>
+                  <ul class="topics">
+                  <li>Work-in-progress presentations and feedback</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+            <li class="week">
+              <div class="wk-side">
+                <span class="wk">Week 8</span>
+                <span class="status">Submission coming soon</span>
+              </div>
+              <div class="wk-main">
+                <p class="mod">Module 7</p>
+                <h3>Capstone Project &amp; Showcase</h3>
+                <details>
+                  <summary>Topics (3)</summary>
+                  <ul class="topics">
+                  <li>Live project presentations and demos</li>
+                  <li>Reflecting on limitations and next steps</li>
+                  <li>AI as a skill multiplier: continuing to learn</li>
+                  </ul>
+                </details>
+              </div>
+            </li>
+          </ol>
+
+          <p class="small">The brochure lists seven modules over eight weeks. The Capstone Project &amp; Showcase is shown across Weeks 7 and 8.</p>
         </div>
       </section>
     </main>
