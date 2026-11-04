@@ -380,11 +380,12 @@
             <li class="week">
               <div class="wk-side">
                 <span class="wk">Week 3</span>
-                <span class="status">Submission coming soon</span>
+                <a class="status" href="#" id="open-chat">Open chatbot</a>
               </div>
               <div class="wk-main">
                 <p class="mod">Module 3</p>
                 <h3>Custom GPTs and Chatbots</h3>
+                <p class="proj"><strong>Workshop 3: Website chatbot.</strong> A Botpress chatbot embedded on this site; open it with the button or the chat bubble in the bottom corner.</p>
                 <details>
                   <summary>Topics (6)</summary>
                   <ul class="topics">
@@ -445,7 +446,7 @@
             <li class="week">
               <div class="wk-side">
                 <span class="wk">Week 6</span>
-                <span class="status">Submission coming soon</span>
+                <a class="status" href="week6_AH.pdf" target="_blank" rel="noopener">View submission</a>
               </div>
               <div class="wk-main">
                 <p class="mod">Module 6</p>
@@ -533,11 +534,16 @@
       if (next === 'light') root.setAttribute('data-mode', 'light'); else root.removeAttribute('data-mode');
       try { localStorage.setItem('ah-mode', next); } catch (e) {}
     });
+    document.getElementById('open-chat').addEventListener('click', function (e) {
+      e.preventDefault();
+      if (window.botpress && window.botpress.open) window.botpress.open();
+    });
   })();
 </script>
 
 </body>
 </html>
+
 
 
 
